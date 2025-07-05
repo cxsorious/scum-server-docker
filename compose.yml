@@ -1,0 +1,19 @@
+services:
+  scum:
+    build: .
+    container_name: SCUM
+    volumes:
+      - ./SCUM:/opt/SCUM
+    environment:
+      SCUM_PORT: 7777 # Connection port will be port + 2 (ex: 7777 + 2 = 7779)
+      SCUM_MAX_PLAYERS: 128
+      SCUM_NO_BATTLEYE: "false"
+      STEAM_APP_ID: "3792580"
+    ports:
+      - "27015:27015/udp"
+      - "7777:7777/udp"
+      - "7778:7778/udp"
+      - "7779:7779/udp"
+      - "7779:7779/tcp"
+      - "7777:7777/tcp"
+    restart: unless-stopped

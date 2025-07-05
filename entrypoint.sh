@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PARAMS=""
-STEAM_CMD="/opt/steamcmd/steamcmd.sh"
+STEAM_CMD="${HOME}/steamcmd/steamcmd.sh"
 STEAM_APP_ID="3792580"
 
 if [[ "${SCUM_NO_BATTLEYE}" == "true" ]]; then
@@ -9,8 +9,8 @@ if [[ "${SCUM_NO_BATTLEYE}" == "true" ]]; then
 fi
 
 echo "[*] Updating SCUM Server..."
-${STEAM_CMD} +@sSteamCmdForcePlatformType windows +force_install_dir /opt/SCUM +login anonymous +app_update ${STEAM_APP_ID} validate +quit
+${STEAM_CMD} +@sSteamCmdForcePlatformType windows +force_install_dir "${HOME}/SCUM" +login anonymous +app_update ${STEAM_APP_ID} validate +quit
 
 echo "[*] Launching SCUM Server..."
-cd /opt/SCUM/SCUM/Binaries/Win64
+cd ${HOME}/SCUM/SCUM/Binaries/Win64
 wine64 SCUMServer.exe -log -port=${SCUM_PORT} -MaxPlayers=${SCUM_MAX_PLAYERS} ${PARAMS}

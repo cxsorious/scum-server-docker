@@ -7,10 +7,9 @@ services:
     network_mode: host
     volumes:
       - /mnt/user/appdata/SCUM-SV1:/home/scum/SCUM
+      - /mnt/user/appdata/steamcmd:/home/scum/steamcmd
     environment:
       TZ: Asia/Bangkok
-      STEAM_USER: 
-      STEAM_PASS: 
       SCUM_PORT: 7777
       SCUM_MAX_PLAYERS: 128
       SCUM_NO_BATTLEYE: "false"

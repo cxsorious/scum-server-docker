@@ -1,4 +1,4 @@
-# SCUM Dedicated Server on Docker
+# SCUM Dedicated Server on Docker (for Unraid Server)
 
 This project allows you to easily run a dedicated SCUM game server using Docker.
 

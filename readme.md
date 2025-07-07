@@ -8,7 +8,7 @@ This project allows you to easily run a dedicated SCUM game server using Docker.
     ```bash
     mkdir -p /mnt/user/appdata/SCUM-SV1/Build
     cd /mnt/user/appdata/SCUM-SV1/Build
-    git clone https://github.com/cxsorious/scum-server-docker.git
+    git clone https://github.com/cxsorious/scum-server-docker.git .
     ```
 2.  **Start Build**
     ```bash

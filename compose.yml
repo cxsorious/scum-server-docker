@@ -12,8 +12,6 @@ services:
       STEAM_USER: 
       STEAM_PASS: 
       SCUM_PORT: 7777
-      SCUM_CLIENT: 7779
-      SCUM_QUERY: 27016
       SCUM_MAX_PLAYERS: 128
       SCUM_NO_BATTLEYE: "false"
       STEAM_APP_ID: "3792580"

@@ -12,7 +12,6 @@ This project allows you to easily run a dedicated SCUM game server using Docker.
     ```
 2.  **Start Build**
     ```bash
-    cd /mnt/user/appdata/SCUM-SV1/Build
     docker build -t scum-server-local .
     ```
     (The game will be downloaded and installed on first startup.)

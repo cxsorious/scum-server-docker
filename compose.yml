@@ -9,10 +9,12 @@ services:
       - /mnt/user/appdata/SCUM-SV1:/home/scum/SCUM
     environment:
       TZ: Asia/Bangkok
-      STEAM_USER: your_steam_user
-      STEAM_PASS: your_steam_password
-      SCUM_PORT: 7777           # พอร์ตเริ่มต้น
-      SCUM_MAX_PLAYERS: 128     # จำนวนผู้เล่นสูงสุด
-      SCUM_NO_BATTLEYE: "false" # เปิด/ปิด BattlEye
-      STEAM_APP_ID: "3792580"   # AppID ของ SCUM Dedicated Server
+      STEAM_USER: 
+      STEAM_PASS: 
+      SCUM_PORT: 7777
+      SCUM_CLIENT: 7779
+      SCUM_QUERY: 27016
+      SCUM_MAX_PLAYERS: 128
+      SCUM_NO_BATTLEYE: "false"
+      STEAM_APP_ID: "3792580"
     restart: unless-stopped

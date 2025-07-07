@@ -1,8 +1,8 @@
 FROM debian:stable-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV UID=99
-ENV GID=100
+ENV UID=1000
+ENV GID=1000
 ENV WINEARCH=win64
 ENV HOME=/home/scum
 ENV WINEPREFIX=${HOME}/wine64

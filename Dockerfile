@@ -1,23 +1,20 @@
 FROM debian:stable-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
-
-ENV UID=1000
-ENV GID=1000
-
+ENV UID=99
+ENV GID=100
 ENV WINEARCH=win64
 ENV HOME=/home/scum
 ENV WINEPREFIX=${HOME}/wine64
-
 ENV SCUM_PORT=7777
 ENV SCUM_MAX_PLAYERS=64
 ENV SCUM_NO_BATTLEYE="false"
 ENV STEAM_APP_ID=3792580
 
 USER root
-    
-RUN dpkg --add-architecture i386
-RUN apt update && \
+
+RUN dpkg --add-architecture i386 && \
+    apt update && \
     apt install -y \
       curl \
       ca-certificates \
@@ -33,22 +30,25 @@ RUN apt update && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g ${GID} scum \
-    && useradd -m -u ${UID} -g ${GID} -s /bin/bash scum
+# สร้าง user/group
+RUN groupadd -g ${GID} scum && \
+    useradd -m -u ${UID} -g ${GID} -s /bin/bash scum
 
+# เตรียม steamcmd folder สำหรับ mount จาก host
+RUN mkdir -p ${HOME}/steamcmd
+
+# copy entrypoint
 COPY entrypoint.sh /entrypoint
 RUN chmod +x /entrypoint
 
 USER scum
 
+# init wine
 RUN mkdir -p ${WINEPREFIX} && \
     wineboot --init && \
     echo "[*] Wine initialization complete."
 
-RUN mkdir -p ${HOME}/steamcmd && \
-    curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" \
-      | tar -xz -C ${HOME}/steamcmd
-
+# เตรียมโฟลเดอร์เกม
 WORKDIR ${HOME}/SCUM
 
 ENTRYPOINT ["/entrypoint"]

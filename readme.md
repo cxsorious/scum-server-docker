@@ -6,12 +6,13 @@ This project allows you to easily run a dedicated SCUM game server using Docker.
 
 1.  **Get Files:**
     ```bash
-    git clone https://github.com/jasonlcsdev/scum-server-docker.git
-    cd scum-server-docker
+    git clone https://github.com/cxsorious/scum-server-docker.git
+    cd /mnt/user/appdata/SCUM-SV1/Build/
     ```
-2.  **Start Server:**
+2.  **Start Build**
     ```bash
-    docker compose up -d --build
+    cd /mnt/user/appdata/SCUM-SV1/Build
+    docker build -t scum-server-local .
     ```
     (The game will be downloaded and installed on first startup.)
 
@@ -41,4 +42,5 @@ Ensure these ports are open in your firewall and mapped in `docker-compose.yml`:
 
 ## Resources
 
+* Fork form (https://github.com/jasonlcsdev/scum-server-docker)
 * For more detailed server setup information, refer to the [SCUM Dedicated server setup guide](https://scum.fandom.com/wiki/Scum_Dedicated_server_setup).

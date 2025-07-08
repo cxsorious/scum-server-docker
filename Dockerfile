@@ -31,9 +31,8 @@ RUN dpkg --add-architecture i386 && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
-# สร้าง user/group ตาม UID GID
-RUN groupadd -g ${GID} scum && \
-    useradd -m -u ${UID} -g ${GID} -s /bin/bash scum
+RUN groupadd -f -g ${GID} scum || true && \
+    id -u scum >/dev/null 2>&1 || useradd -m -u ${UID} -g ${GID} -s /bin/bash scum
 
 # เตรียม steamcmd โฟลเดอร์ (mount จาก host)
 RUN mkdir -p /serverdata/steamcmd

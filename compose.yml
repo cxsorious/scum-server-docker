@@ -14,4 +14,6 @@ services:
       SCUM_MAX_PLAYERS: 128
       SCUM_NO_BATTLEYE: "false"
       STEAM_APP_ID: "3792580"
+      STEAM_USER: ""
+      STEAM_PASS: ""
     restart: unless-stopped

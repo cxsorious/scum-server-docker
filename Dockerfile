@@ -1,11 +1,12 @@
 FROM debian:stable-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV UID=1000
-ENV GID=1000
+ENV UID=99
+ENV GID=100
 ENV WINEARCH=win64
 ENV HOME=/home/scum
 ENV WINEPREFIX=${HOME}/wine64
+
 ENV SCUM_PORT=7777
 ENV SCUM_MAX_PLAYERS=64
 ENV SCUM_NO_BATTLEYE="false"
@@ -30,25 +31,25 @@ RUN dpkg --add-architecture i386 && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
-# สร้าง user/group
+# สร้าง user/group ตาม UID GID
 RUN groupadd -g ${GID} scum && \
     useradd -m -u ${UID} -g ${GID} -s /bin/bash scum
 
-# เตรียม steamcmd folder สำหรับ mount จาก host
-RUN mkdir -p ${HOME}/steamcmd
+# เตรียม steamcmd โฟลเดอร์ (mount จาก host)
+RUN mkdir -p /serverdata/steamcmd
 
-# copy entrypoint
+# คัดลอก entrypoint และตั้งสิทธิ์ให้รันได้
 COPY entrypoint.sh /entrypoint
 RUN chmod +x /entrypoint
 
 USER scum
 
-# init wine
+# เตรียม wine prefix
 RUN mkdir -p ${WINEPREFIX} && \
     wineboot --init && \
     echo "[*] Wine initialization complete."
 
-# เตรียมโฟลเดอร์เกม
-WORKDIR ${HOME}/SCUM
+# ตั้ง working directory ที่โฟลเดอร์เกม (จะ map จาก host เป็น /serverdata/serverfiles)
+WORKDIR /serverdata/serverfiles
 
 ENTRYPOINT ["/entrypoint"]

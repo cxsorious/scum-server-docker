@@ -16,7 +16,9 @@ This project allows you to easily run a dedicated SCUM game server using Docker.
     ```
 3. **After Build Finished:**
     Download and Place File: my-SCUM-SV1.xml in /boot/config/plugins/dockerMan/templates-user
+    ```bash
     Goto > Add Container > Template Select a template SCUM-SV1 > Apply
+    ```
     Start Container SCUM-SV1
 
 ## Configuration

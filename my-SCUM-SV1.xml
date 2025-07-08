@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>SCUM-SV1</Name>
+  <Repository>scum-server-local</Repository>
+  <Registry/>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>SCUM Dedicated Server running via Docker</Overview>
+  <Category/>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1751989184</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="SteamCMD" Target="/serverdata/steamcmd" Default="/mnt/user/appdata/steamcmd" Mode="rw" Description="{4}" Type="Path" Display="always" Required="true" Mask="{8}">/mnt/user/appdata/steamcmd</Config>
+  <Config Name="ServerFiles" Target="/serverdata/serverfiles" Default="/mnt/user/appdata/SCUM-SV1" Mode="rw" Description="{4}" Type="Path" Display="always" Required="true" Mask="{8}">/mnt/user/appdata/SCUM-SV1</Config>
+  <Config Name="SCUM_PORT" Target="SCUM_PORT" Default="7777" Mode="{3}" Description="{4}" Type="Variable" Display="always" Required="true" Mask="{8}">7777</Config>
+  <Config Name="SCUM_MAX_PLAYERS" Target="SCUM_MAX_PLAYERS" Default="64" Mode="{3}" Description="{4}" Type="Variable" Display="always" Required="true" Mask="{8}">64</Config>
+  <Config Name="SCUM_NO_BATTLEYE" Target="SCUM_NO_BATTLEYE" Default="false" Mode="{3}" Description="{4}" Type="Variable" Display="always" Required="true" Mask="{8}">false</Config>
+  <Config Name="STEAM_APP_ID" Target="STEAM_APP_ID" Default="3792580" Mode="{3}" Description="{4}" Type="Variable" Display="always" Required="true" Mask="{8}">3792580</Config>
+  <Config Name="UID" Target="UID" Default="99" Mode="{3}" Description="{4}" Type="Variable" Display="advanced-hide" Required="true" Mask="{8}">99</Config>
+  <Config Name="GID" Target="GID" Default="100" Mode="{3}" Description="{4}" Type="Variable" Display="advanced-hide" Required="true" Mask="{8}">100</Config>
+  <TailscaleStateDir/>
+</Container>
